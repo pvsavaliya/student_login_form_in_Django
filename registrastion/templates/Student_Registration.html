@@ -1,0 +1,192 @@
+<html>
+<Title>Registration</Title>
+<style>
+            th {
+                text-align: left;
+            }
+            .button {
+                        color: white;
+                        padding: 15px 32px;
+                        text-align: center;
+                        text-decoration: none;
+                        display: inline-block;
+                        font-size: 16px;
+                        margin: 4px 2px;
+                        cursor: pointer;
+                    }
+            .button1 {
+                background-color: red;
+                }
+
+            .button2 {
+                background-color: #008CBA;
+                }
+            #body{
+                background: url('/media/login.png');
+                
+                height: 99vh;
+                background-size: cover;
+                background-position: center;
+            }
+            .content{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                z-index: 999;
+                text-align: center;
+                padding: 60px 32px;
+                width: 720px;
+                transform: translate(-50%,-50%);
+                background: rgba(255,255,255,0.04);
+                box-shadow: -1px 4px 28px 0px rgb(0 0 0 / 7)
+            }
+</style>
+<center><body id='body'>
+<div>
+    <h1>Student Registration Form</h1>
+{% comment %} <img src="/registration/media/abcd.png" width="200"  > {% endcomment %}
+</div>
+
+<form action="login/" method='POST' enctype="multipart/form-data">
+<div class="content">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <th><label for="first_name">First name:</label><br>
+            <th><label for="mid_name">Middle name:</label><br>
+            <th><label for="last_name">Last name:</label><br>
+        </tr>
+
+                <tr>
+                    <td><input type="text" id="first_name" name="first_name" size="30" ></td>
+                    <td><input type="text" id="mid_name" name="mid_name" size="30" ></td>
+                    <td><input type="text" id="last_name" name="last_name" size="30" ></td>
+                </tr>
+
+        <tr>
+            <th><label form="email_id">Email Id</label></th>
+            <th><label for="Password">Password</label></th>
+            <th><label for="Password_2">Confirm Password</label></th>
+        </tr>
+
+                <tr>
+                    <td><input type="email" name="email_id" id="email_id" size="30" ></td>
+                    <td><input type="password" name="Password" id="Password" size="30"></td>
+                    <td><input type="password" name="Password_2" id="Password_2" size="30"></td>
+                </tr>
+
+        <tr>
+            <th><label for="Address">Address</label></th>
+            <th><label for="mobil_no">Mobile no.</label></th>
+            <th><label for="mobil_no2">Privet mobile no.</label></th>
+        </tr>
+
+                <tr>
+                    <td><textarea name="Address" id="Address"  style="width: 240px; height: 21px;" ></textarea></td>
+                    <td><input type="number" name="mobil_no" id="mobil_no" ></td>
+                    <td><input type="number" name="mobil_no2" id="mobil_no2" ></td>
+                </tr>
+
+        <tr>
+            <th>Hobby</th>
+            <th><label for="gender"> Geander</label></th>
+
+        </tr>
+
+                <tr>
+                    <td>
+
+                        <input type="checkbox" name="hobby[]" value="0">    
+                        <label for="cricket">Cricket</label><br>
+
+                        <input type="checkbox" name="hobby[]" value="1">    
+                        <label for="hocky">Hocky</label>
+                        
+                        <input type="checkbox" name="hobby[]" value="2">    
+                        <label for="basket_boll">Basket boll</label>
+
+                        <input type="checkbox" name="other" value='3'>    
+                        <label for="other">Other</label></td>
+
+                        <td><input type="radio" name="gender" value="0" size="10">Male <br> <input type="radio" name="gender" value="1" size="10">Female</td>
+
+                        
+                </tr>
+                
+            <tr>
+                <th><label for="country">Country</label></th>
+                <th><label for="state">State</label><br></th>
+                <th><label for="City">City</label><br></th>
+                
+            </tr>
+                        <tr>
+                            <td>
+                                <select name="country" >
+                                    <option value="-1" selected>select..</option>
+                                    <option value="0">India</option>
+                                    <option value="1">USA</option>
+                                    <option value="2">UK</option>
+                                    <option value="3">other</option>
+                                </select>
+                            </td>
+
+                                <td>
+                                    <select name="state" >
+                                        <option value="-1" selected>Select..</option>
+                                        <option value="0">Gujrat</option>
+                                        <option value="1">Maharastra</option>
+                                        <option value="2">UP</option>
+                                        <option value="3">oyher</option>
+                                    </select>
+                                </td>
+
+                    <td>
+
+                        <select name="City" >
+                            <option value="-1" selected>select..</option>
+                            <option value="0">Surat</option>
+                            <option value="1">Vadodra</option>
+                            <option value="2">Rajkot</option>
+                            <option value="3">Other</option>
+                        </select>
+                    </td>
+                </tr>
+            
+            <tr>
+                <th><label for="collage">Collages</label></th>
+                <th><label for="d_o_b">Date Of Joining</label></th>
+                <th><label for="markshit_12"> 12th Markshit: </label></th>
+            </tr>
+                    <tr>
+                        <td><select multiple name="collage" size="2" >
+                            <option value="0">Collage1</option>
+                            <option value="1">Collage2</option>
+                            <option value="2">Collage3</option>
+                            <option value="3">Other</option>
+                            
+                        </select>
+                        </td>
+
+                        <td><input type="date" name="date" id="date" size="30" ></td>
+                        <td><input type="file" id="files" name="markshit_12" multiple ></td> 
+                    </tr>
+    </table>
+    <br><br>
+    <button type="reset" class="button button1">Reset</button>
+    <button type="submit" class="button button2">submit</button><br><br>
+    {% if pass == True %}
+    <p>{{ text }}</p>
+    {% endif %}
+    {% if phone == True %}
+    <p>{{ phone_txt }}</p>
+    {% endif %}
+</form>
+
+<form action="/login">
+    
+    you have allresdy account<button type="submit" class="button button2">log in</button>
+</form>
+</body>
+</div>
+</center>
+</html>

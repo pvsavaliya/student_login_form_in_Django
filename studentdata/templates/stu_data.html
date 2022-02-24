@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        table{
+                        border:1px solid black;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+        th, td {
+                    background-color: #8cb3d9;
+                    {% comment %} /* border-radius: 10px; */ {% endcomment %}
+                }
+        .button {
+                    transition-duration: 0.2s;
+                        border-radius: 27%;
+                    }
+
+        .button:hover {
+                    background-color: #4CAF50; /* Green */
+                    color: white;
+                    }
+        .button1:hover {
+                    background-color: red; /* Green */
+                    color: white;
+                    }
+
+    </style>
+
+    <body bgcolor='#132639'>
+
+<div style="float: right;">
+
+    <a href="/registration/logout/"> <button type="button" >log out</button></a>
+    
+</div>
+   
+<form id="login" method="GET" action="/studentdata">
+
+    <div style="float: right;">
+    
+    <input type="text" name="search" id="search">
+    <button type="submit">Search</button>
+    
+  </div>
+</form>
+    
+
+        <table cellpadding="10" width="50%" cellspacing="1"   style="width:100%">
+            <tr>
+                <!-- <th colspan="2">Name</th> -->
+                <th colspan="18">
+                    <center><font size=40><b>Student list view</b></font></center>
+                </th>
+              </tr>
+              
+            <tr>
+                <th><span style="color:black;font-weight: bold;">Id</span></th>
+                <th><span style="color:black;font-weight: bold;">First name</span></th>
+                <th><span style="color:black;font-weight: bold;">Middle Name</span></th>
+                <th><span style="color:black;font-weight: bold;">last Name</span></th>
+                <th><span style="color:black;font-weight: bold;">Address</span></th>
+                <th><span style="color:black;font-weight: bold;">Email</span></th>
+                <th><span style="color:black;font-weight: bold;">Phone Number</span></th>
+                <th><span style="color:black;font-weight: bold;">Officen Number</span></th>
+                <th><span style="color:black;font-weight: bold;">Password</span></th>
+                <th><span style="color:black;font-weight: bold;">Hobby</span></th>
+                <th><span style="color:black;font-weight: bold;">Gender</span></th>
+                <th><span style="color:black;font-weight: bold;">Country</span></th>
+                <th><span style="color:black;font-weight: bold;">State</span></th>
+                <th><span style="color:black;font-weight: bold;">City</span></th>
+                <th><span style="color:black;font-weight: bold;">Collage</span></th>
+                <th><span style="color:black;font-weight: bold;">Date of joining</span></th>
+                <th><span style="color:black;font-weight: bold;">Upload image</span></th>
+                <th><span style="color:black;font-weight: bold;">Update Table</span></th>
+            </tr>
+            <tr>
+            {% for idata in Studentdata  %}
+                <td>{{idata.id}}</td>
+                <td>{{idata.frist_name}}</td>
+                <td>{{idata.middle_name}}</td>
+                <td>{{idata.last_name}}</td>
+                <td>{{idata.Address}}</td>
+                <td>{{idata.email}}</td>
+                <td>{{idata.phone_num}}</td>
+                <td>{{idata.office_num}}</td>
+                <td>{{idata.user_pass}}</td>
+                <td>{{idata.hobby}}</td>
+                <td>{{idata.gender}}</td>
+                <td>{{idata.country}}</td>
+                <td>{{idata.state}}</td>
+                <td>{{idata.city}}</td>
+                <td>{{idata.collage}}</td>
+                <td>{{idata.joine_date}}</td>
+                
+                {% if idata.markshit_12 != None and idata.markshit_12 != '' %}
+                    <td> <img src="/media/{{idata.markshit_12}}" width="100" height="100"></td>
+                {% else %}
+                    <td>image is not Upload</td>
+                {% endif %}
+                
+                <td>
+                    <a href='/login/update/{{idata.id}}'><button type="button" class="button button2">edit</button></a>
+                    <a href='/login/delete/{{idata.id}}'><button type="button" class="button button1">delete</button></a>
+                 </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
+
